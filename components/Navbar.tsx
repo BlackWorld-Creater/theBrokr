@@ -31,9 +31,9 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out",
         isScrolled 
-          ? "py-4 bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-white/20 shadow-lg" 
+          ? "py-3 bg-white/70 dark:bg-black/80 backdrop-blur-2xl border-b border-brand-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]" 
           : "py-6 bg-transparent"
       )}
     >
@@ -92,8 +92,8 @@ const Navbar = () => {
               className={cn(
                 "rounded-full px-8 py-6 text-sm font-bold uppercase tracking-[0.1em] transition-all duration-500",
                 isScrolled
-                  ? "bg-brand-950 text-white hover:bg-brand-800 shadow-xl border border-transparent"
-                  : "bg-transparent text-white border-2 border-white hover:bg-white hover:text-brand-950 shadow-none"
+                  ? "bg-brand-950 text-white hover:bg-indigo-600 shadow-xl hover:shadow-indigo-500/20 border border-transparent"
+                  : "bg-white/10 backdrop-blur-md text-white border border-white/30 hover:bg-white hover:text-brand-950 shadow-none hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
               )}
               asChild
             >

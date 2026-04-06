@@ -26,7 +26,10 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-white overflow-hidden">
+    <section id="about" className="section-padding bg-white overflow-hidden relative">
+      {/* Subtle bg decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50/40 rounded-full blur-[120px] -mr-64 -mt-32 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/30 rounded-full blur-[100px] -ml-48 -mb-32 pointer-events-none" />
       <div className="container max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* Left: Content */}
@@ -69,7 +72,7 @@ const About = () => {
             </div>
 
             <div className="pt-8">
-              <div className="p-10 md:p-12 rounded-[50px] bg-brand-50 border border-brand-100 relative overflow-hidden group shadow-inner">
+              <div className="p-10 md:p-12 rounded-[50px] bg-gradient-to-br from-brand-50 to-indigo-50/30 border border-brand-100/80 relative overflow-hidden group shadow-[0_4px_30px_rgba(99,102,241,0.04)] hover:shadow-[0_8px_40px_rgba(99,102,241,0.08)] transition-all duration-500">
                 {/* Background Decoration */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/5 blur-[60px] -mr-24 -mt-24 transition-all duration-700 group-hover:scale-150" />
                 
@@ -112,7 +115,7 @@ const About = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: i * 0.2 }}
                   viewport={{ once: true }}
-                  className="p-8 rounded-[40px] bg-white border border-brand-100 shadow-xl shadow-brand-500/5 hover:translate-x-4 transition-all duration-500 group"
+                  className="p-8 rounded-[40px] bg-white/90 backdrop-blur-sm border border-brand-100/60 shadow-lg shadow-brand-500/5 hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/8 hover:border-indigo-200/60 transition-all duration-500 group"
                 >
                   <div className="flex items-start space-x-6">
                     <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${item.color}`}>

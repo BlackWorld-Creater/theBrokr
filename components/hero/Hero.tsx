@@ -2,10 +2,23 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Play, X, Target, Building2, Users2, ShieldCheck, TrendingUp, Gem } from "lucide-react"
+import { ArrowRight, Play, X, Target, Building2, Users2, ShieldCheck, TrendingUp, Gem, Rocket, Home as HomeIcon, Code2, Landmark, ShieldCheck as Shield2, PieChart, Plane, ShoppingBag, Stethoscope, Users, Store } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+
+const serviceTags = [
+  { name: "Real Estate", icon: Building2, color: "from-blue-500 to-blue-600" },
+  { name: "IT & Software", icon: Code2, color: "from-indigo-500 to-indigo-600" },
+  { name: "Finance", icon: Landmark, color: "from-emerald-500 to-emerald-600" },
+  { name: "Insurance", icon: ShieldCheck, color: "from-rose-500 to-rose-600" },
+  { name: "Investment", icon: PieChart, color: "from-amber-500 to-amber-600" },
+  { name: "Travel", icon: Plane, color: "from-sky-500 to-sky-600" },
+  { name: "Grocery", icon: ShoppingBag, color: "from-green-500 to-green-600" },
+  { name: "Healthcare", icon: Stethoscope, color: "from-teal-500 to-teal-600" },
+  { name: "Manpower", icon: Users, color: "from-purple-500 to-purple-600" },
+  { name: "E-Commerce", icon: Store, color: "from-pink-500 to-pink-600" },
+]
 
 const Hero = () => {
   const [showOverview, setShowOverview] = useState(false)
@@ -42,7 +55,7 @@ const Hero = () => {
   ]
 
   return (
-    <section id="home" className="relative h-screen min-h-[800px] w-full flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen min-h-[850px] w-full flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -50,16 +63,31 @@ const Hero = () => {
           muted
           loop
           playsInline
-          className="h-full w-full object-cover"
+          className="h-full w-full object-fill"
         >
-          <source src="/assets/WhatsApp-Video-2025-06-23-at-1.57.47-PM.mp4" type="video/mp4" />
+          <source src="/assets/v1.mp4" type="video/mp4" />
         </video>
         {/* Gradient only on bottom-left where text sits */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent" />
+        {/* Additional subtle animated gradient overlay */}
+        <div className="absolute inset-0 hero-gradient-animated opacity-60" />
       </div>
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="max-w-4xl space-y-10">
+          {/* Launching Soon Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
+              <Rocket className="w-4 h-4 text-indigo-300" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/90">Launching Soon — Multi-Industry Platform</span>
+              <span className="glow-dot" />
+            </div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +113,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
-              className="w-full sm:w-auto h-16 px-10 rounded-2xl bg-white text-brand-950 font-bold text-lg shadow-2xl hover:bg-brand-50 transition-all duration-500 group"
+              className="w-full sm:w-auto h-16 px-10 rounded-2xl bg-white text-brand-950 font-bold text-lg shadow-2xl hover:bg-brand-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-500 group"
               asChild
             >
               <Link href="#contact">
@@ -98,13 +126,38 @@ const Hero = () => {
               variant="outline" 
               size="lg" 
               onClick={() => setShowOverview(true)}
-              className="w-full sm:w-auto h-16 px-10 rounded-2xl border-white/30 bg-white/10 backdrop-blur-md text-white font-bold text-lg hover:bg-white/20 transition-all group"
+              className="w-full sm:w-auto h-16 px-10 rounded-2xl border-white/30 bg-white/10 backdrop-blur-md text-white font-bold text-lg hover:bg-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all group"
             >
               <Play className="mr-2 h-5 w-5 fill-white group-hover:scale-110 transition-transform" />
               Watch Overview
             </Button>
           </motion.div>
         </div>
+      </div>
+
+      {/* ── Floating Service Tags Strip ── */}
+      <div className="absolute bottom-10 left-0 right-0 z-10 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <div className="overflow-hidden py-3">
+            <div className="service-tags-strip">
+              {[...serviceTags, ...serviceTags].map((tag, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2.5 px-5 py-2.5 mx-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/90 shrink-0 hover:bg-white/20 hover:border-white/30 transition-all duration-300 cursor-default group"
+                >
+                  <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${tag.color} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform`}>
+                    <tag.icon className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <span className="text-xs font-bold tracking-wide whitespace-nowrap">{tag.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Overview Modal */}
@@ -194,11 +247,11 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-2 opacity-50"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-1 opacity-40"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-white/0 to-white" />
+        <div className="w-px h-8 bg-gradient-to-b from-white/0 to-white" />
         <span className="text-[10px] text-white uppercase tracking-[0.2em] font-bold">Scroll</span>
       </motion.div>
     </section>

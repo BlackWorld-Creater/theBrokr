@@ -44,7 +44,7 @@ const Services = () => {
   ]
 
   return (
-    <section id="services" className="section-padding bg-white relative">
+    <section id="services" className="section-padding bg-section-alt relative">
       <div className="container max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
           <div className="space-y-4">
@@ -70,7 +70,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative h-[380px] rounded-[30px] overflow-hidden bg-brand-900 transition-all duration-700 hover:-translate-y-4 shadow-xl hover:shadow-2xl shadow-brand-500/10 cursor-pointer"
+              className="group relative h-[380px] rounded-[30px] overflow-hidden bg-brand-900 transition-all duration-700 hover:-translate-y-4 shadow-xl hover:shadow-2xl hover:shadow-indigo-500/10 shadow-brand-500/10 cursor-pointer"
             >
               {/* Background Image Container */}
               <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-110">
@@ -105,6 +105,14 @@ const Services = () => {
 
               {/* Border Decor */}
               <div className="absolute inset-0 border-[1px] border-white/5 rounded-[30px] pointer-events-none group-hover:border-indigo-500/20 transition-colors duration-700" />
+
+              {/* Launching Soon Badge */}
+              <div className="absolute top-5 right-5 z-10">
+                <div className="badge-launching">
+                  <span className="glow-dot !w-1.5 !h-1.5" />
+                  Launching Soon
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

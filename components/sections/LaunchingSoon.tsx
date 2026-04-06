@@ -93,7 +93,7 @@ const LaunchingSoon = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group p-8 rounded-[40px] bg-white border border-brand-100 hover:border-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 relative flex flex-col h-full"
+              className="group p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-500/8 transition-all duration-500 relative flex flex-col h-full hover:-translate-y-2"
             >
               <div className={`w-14 h-14 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center mb-6 transition-transform group-hover:scale-110 group-hover:-rotate-3 shadow-sm`}>
                 <item.icon className="w-7 h-7" />
@@ -109,7 +109,8 @@ const LaunchingSoon = () => {
 
               {/* Status Badge */}
               <div className="mt-auto pt-6">
-                <span className="inline-block px-3 py-1 rounded-full bg-brand-50 text-[10px] uppercase font-black tracking-tighter text-brand-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                <span className="badge-launching group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                  <span className="glow-dot !w-1.5 !h-1.5 group-hover:!bg-white" />
                   Expanding Soon
                 </span>
               </div>

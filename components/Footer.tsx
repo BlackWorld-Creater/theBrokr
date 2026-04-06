@@ -13,7 +13,9 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-slate-50 text-brand-950 pt-24 pb-12 overflow-hidden border-t border-brand-100">
+    <footer className="relative bg-gradient-to-b from-slate-50 to-slate-100/80 text-brand-950 pt-24 pb-12 overflow-hidden border-t border-brand-100/50">
+      {/* Top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
       {/* Background Decor */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-200/20 blur-[120px] rounded-full" />
@@ -42,7 +44,7 @@ const Footer = () => {
                   key={i}
                   href={social.href}
                   whileHover={{ y: -3, scale: 1.1 }}
-                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-brand-200 hover:border-indigo-500 hover:bg-indigo-50 transition-all shadow-sm"
+                  className="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-brand-200 hover:border-indigo-400 hover:bg-indigo-50 hover:shadow-lg hover:shadow-indigo-500/10 transition-all shadow-sm"
                 >
                   <social.icon className="w-5 h-5 text-brand-600" />
                 </motion.a>

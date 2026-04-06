@@ -31,6 +31,7 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-white relative overflow-hidden">
       {/* Header Decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-100 to-transparent" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[120px] -mr-48 -mt-32 pointer-events-none" />
       
       <div className="container max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -61,7 +62,7 @@ const Contact = () => {
                 href="https://wa.me/919999900943" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-8 rounded-[40px] bg-brand-50 border border-brand-100 group hover:bg-white hover:border-indigo-300 hover:shadow-xl transition-all duration-500"
+                className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
               >
                 <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">
                   <MessageSquare className="w-6 h-6" />
@@ -72,7 +73,7 @@ const Contact = () => {
               </a>
               <a 
                 href="tel:+919999900943"
-                className="p-8 rounded-[40px] bg-brand-50 border border-brand-100 group hover:bg-white hover:border-indigo-300 hover:shadow-xl transition-all duration-500"
+                className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
               >
                 <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6" />
@@ -117,7 +118,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="p-10 lg:p-16 h-fit rounded-[60px] bg-slate-50 border border-brand-100 shadow-2xl relative overflow-hidden"
+            className="p-10 lg:p-16 h-fit rounded-[60px] bg-white/70 backdrop-blur-xl border border-brand-100/60 shadow-[0_4px_40px_rgba(99,102,241,0.05)] relative overflow-hidden"
           >
             <div className="space-y-10 relative z-10">
               <div className="space-y-4">
