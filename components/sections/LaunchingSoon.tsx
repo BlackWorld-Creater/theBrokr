@@ -5,15 +5,15 @@ import { Building2, Code2, Landmark, ShieldCheck, PieChart, Plane, ShoppingBag, 
 
 const categories = [
   {
-    title: "Real Estate",
-    description: "Turning aspirations into addresses — our real estate services bring you reliable property options with transparency.",
-    icon: Building2,
-    color: "text-blue-600",
-    bg: "bg-blue-50"
+    title: "Grocery",
+    description: "Fresh, fast, and to your door — our grocery vertical brings quality essentials straight to your home at everyday affordable prices.",
+    icon: ShoppingBag,
+    color: "text-green-600",
+    bg: "bg-green-50"
   },
   {
     title: "Software",
-    description: "Health at your doorstep — we’re working to bring reliable, and timely medicines and health services to every home soon.",
+    description: "Powering the future — we're building cutting-edge software solutions that streamline business operations and unlock new digital possibilities.",
     icon: Code2,
     color: "text-indigo-600",
     bg: "bg-indigo-50"

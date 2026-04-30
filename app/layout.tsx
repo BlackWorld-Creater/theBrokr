@@ -53,9 +53,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en" className="scroll-smooth">
       <body className={cn(
-        inter.variable, 
+        inter.variable,
         outfit.variable,
-        "font-sans antialiased"
+        "antialiased"
       )}>
         <Navbar />
         {children}

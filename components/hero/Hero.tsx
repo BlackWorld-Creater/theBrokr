@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, Play, X, Target, Building2, Users2, ShieldCheck, TrendingUp, Gem, Rocket, Home as HomeIcon, Code2, Landmark, ShieldCheck as Shield2, PieChart, Plane, ShoppingBag, Stethoscope, Users, Store } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+import IndustryShowcase from "./IndustryShowcase"
 
 const serviceTags = [
   { name: "Real Estate", icon: Building2, color: "from-blue-500 to-blue-600" },
@@ -53,24 +54,26 @@ const Hero = () => {
       stats: "Zero Entry Cost"
     }
   ]
+  const rotatingWords = ["Success", "Victory", "Triumph", "Fortune", "Winning"]
+  const rotatingSynonyms = ["Unite.", "Converge.", "Connect.", "Align.", "Merge."]
+  const [wordIndex, setWordIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % rotatingWords.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section id="home" className="relative h-screen min-h-[850px] w-full flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+    <section id="home" className="relative h-screen min-h-[850px] w-full flex items-center justify-center overflow-hidden font-display">
+      {/* Video Background Replacement */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="h-full w-full object-fill"
-        >
-          <source src="/assets/v1.mp4" type="video/mp4" />
-        </video>
+        <IndustryShowcase />
         {/* Gradient only on bottom-left where text sits */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent pointer-events-none" />
         {/* Additional subtle animated gradient overlay */}
-        <div className="absolute inset-0 hero-gradient-animated opacity-60" />
+        <div className="absolute inset-0 hero-gradient-animated opacity-40 pointer-events-none" />
       </div>
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -94,14 +97,41 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            <h1 className="text-5xl md:text-8xl font-display font-bold text-white leading-[1.1] tracking-tight" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
-              Where Skills, Business <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-200 italic font-light">
-                & Opportunity Meet.
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight" style={{ textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}>
+              Where Business <span className="text-indigo-400">&amp;</span>
+              <span className="block mt-2">
+                <span className="inline-flex items-center justify-start whitespace-nowrap">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={rotatingWords[wordIndex]}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block pb-3 text-3xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-300 to-white"
+                    >
+                      {rotatingWords[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={rotatingSynonyms[wordIndex]}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block pb-3 text-3xl md:text-5xl lg:text-6xl font-bold ml-3 text-transparent bg-clip-text bg-gradient-to-r from-white to-white drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                    >
+                      {rotatingSynonyms[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-white/90 font-light leading-relaxed max-w-2xl" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}>
-              Join the future of collaborative wealth. We bridge the gap between human potential and high-growth investment clusters.
+
+            <p className="text-xl md:text-3xl text-white/80 font-light leading-relaxed max-w-3xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.5)' }}>
+              Join the future of collaborative wealth. <br className="hidden md:block" />
+              We bridge the gap between human potential and high-growth investment clusters.
             </p>
           </motion.div>
 
@@ -111,9 +141,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row items-center gap-6 pt-4"
           >
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto h-16 px-10 rounded-2xl bg-white text-brand-950 font-bold text-lg shadow-2xl hover:bg-brand-50 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-500 group"
+            <Button
+              size="lg"
+              className="w-full sm:w-auto h-14 px-8 rounded-2xl bg-white text-brand-950 font-bold text-base shadow-2xl hover:bg-brand-50 hover:shadow-[0_0_24px_rgba(255,255,255,0.3)] transition-all duration-500 group"
               asChild
             >
               <Link href="#contact">
@@ -121,12 +151,12 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
               </Link>
             </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
+
+            <Button
+              variant="outline"
+              size="lg"
               onClick={() => setShowOverview(true)}
-              className="w-full sm:w-auto h-16 px-10 rounded-2xl border-white/30 bg-white/10 backdrop-blur-md text-white font-bold text-lg hover:bg-white/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all group"
+              className="w-full sm:w-auto h-14 px-8 rounded-2xl border-white/30 bg-white/10 backdrop-blur-md text-white font-bold text-base hover:bg-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all group"
             >
               <Play className="mr-2 h-5 w-5 fill-white group-hover:scale-110 transition-transform" />
               Watch Overview
@@ -176,7 +206,7 @@ const Hero = () => {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               className="w-full max-w-6xl bg-white/95 rounded-[3rem] shadow-2xl overflow-hidden relative border border-white/20 p-8 md:p-16 max-h-[90vh] overflow-y-auto hide-scrollbar"
             >
-              <button 
+              <button
                 onClick={() => setShowOverview(false)}
                 className="absolute top-8 right-8 p-3 text-brand-950/40 hover:text-brand-950 hover:bg-brand-50 rounded-full transition-all z-20"
               >
@@ -186,7 +216,7 @@ const Hero = () => {
               <div className="space-y-12">
                 <div className="text-center space-y-4 max-w-2xl mx-auto">
                   <h3 className="text-indigo-600 font-bold uppercase tracking-widest text-sm">Business Ecosystem</h3>
-                  <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-950">Architecting Infinite Growth.</h2>
+                  <h2 className="text-3xl md:text-4xl font-display font-bold text-brand-950">Architecting Infinite Growth.</h2>
                   <p className="text-brand-600">Discover how TheBrokr combines skill-based entry with strategic asset management to deliver unmatched returns.</p>
                 </div>
 
@@ -201,11 +231,11 @@ const Hero = () => {
                     >
                       {/* Color Glow Overlay */}
                       <div className={cn("absolute -top-10 -right-10 w-24 h-24 blur-[40px] opacity-10 transition-all duration-700 group-hover:scale-150 group-hover:opacity-20", slide.color)} />
-                      
+
                       <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3", slide.color)}>
                         <slide.icon className="w-8 h-8" />
                       </div>
-                      
+
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
                           <h4 className="text-xl font-bold text-brand-950">{slide.title}</h4>
@@ -219,16 +249,16 @@ const Hero = () => {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-6">
-                  <Button 
+                  <Button
                     size="lg"
                     onClick={() => setShowOverview(false)}
                     className="rounded-2xl px-12 h-16 bg-brand-950 text-white shadow-xl font-bold hover:bg-brand-800 transition-colors w-full md:w-auto"
                   >
                     Close Overview
                   </Button>
-                  <Button 
+                  <Button
                     variant="outline"
                     size="lg"
                     asChild

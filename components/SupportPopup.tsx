@@ -11,7 +11,11 @@ const SupportPopup = () => {
   const whatsappUrl = `https://wa.me/919999900943`
 
   return (
-    <div className="fixed bottom-10 right-10 z-[100] flex flex-col items-end space-y-4">
+    <motion.div 
+      drag
+      dragMomentum={false}
+      className="fixed bottom-2 right-10 z-[100] flex flex-col items-end space-y-4"
+    >
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -30,7 +34,7 @@ const SupportPopup = () => {
               </button>
             </div>
             <div className="p-4 space-y-2">
-              <a 
+              <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,7 +48,7 @@ const SupportPopup = () => {
                   <div className="text-[10px] opacity-70">Instant Chat</div>
                 </div>
               </a>
-              <a 
+              <a
                 href={`tel:${phoneNumber}`}
                 className="flex items-center space-x-4 p-4 rounded-2xl bg-brand-50 hover:bg-brand-900 hover:text-white transition-all group"
               >
@@ -65,7 +69,7 @@ const SupportPopup = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-20 h-20 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl shadow-green-500/20 relative group"
+        className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shadow-2xl shadow-green-500/20 relative group"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -75,7 +79,7 @@ const SupportPopup = () => {
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: 90 }}
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 h-6" />
             </motion.div>
           ) : (
             <motion.div
@@ -85,18 +89,18 @@ const SupportPopup = () => {
               exit={{ opacity: 0, rotate: -90 }}
               className="relative"
             >
-              <MessageCircle className="w-10 h-10" />
+              <MessageCircle className="w-7 h-7" />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-green-500 rounded-full" />
             </motion.div>
           )}
         </AnimatePresence>
-        
+
         {/* Subtle Pulse Effect */}
         {!isOpen && (
           <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20 pointer-events-none" />
         )}
       </motion.button>
-    </div>
+    </motion.div>
   )
 }
 

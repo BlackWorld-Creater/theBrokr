@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Download, ArrowUp } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Download, ArrowUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const Footer = () => {
@@ -63,7 +63,6 @@ const Footer = () => {
                 { name: "About Company", href: "#about" },
                 { name: "Our Services", href: "#services" },
                 { name: "Latest Projects", href: "#projects" },
-                { name: "Our Team", href: "#team" },
                 { name: "Contact Hub", href: "#contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -79,50 +78,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Details */}
-          <div className="lg:col-span-1">
-            <h3 className="text-brand-950 font-display font-bold text-lg mb-8 relative inline-block">
-              Get In Touch
-              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-indigo-600 rounded-full" />
-            </h3>
-            <ul className="space-y-6">
-              <li className="flex items-start space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div className="text-sm text-brand-600 leading-relaxed">
-                  TheBrokr Office
-                  <br />
-                  Plot No. 70, 1st Floor, Udyog Vihar Phase-6,
-                  <br />
-                  Sector-37 Industrial Area, Gurugram, HR
-                </div>
-              </li>
-              <li className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div className="text-sm text-brand-600">
-                  <a href="tel:+919999900943" className="hover:text-indigo-600 transition-colors block">
-                    +91 99999 00943
-                  </a>
-                  <a href="tel:+919811747488" className="hover:text-indigo-600 transition-colors block">
-                    +91 98117 47488
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div className="text-sm text-brand-600">
-                  <a href="mailto:info@thebrokrs.co.in" className="hover:text-indigo-600 transition-colors">
-                    info@thebrokrs.co.in
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
 
           {/* Call to Action */}
           <div>
@@ -153,7 +108,7 @@ const Footer = () => {
           <div className="flex items-center space-x-8 text-xs text-brand-400">
             <Link href="#" className="hover:text-brand-900 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-brand-900 transition-colors">Terms of Service</Link>
-            <button 
+            <button
               onClick={scrollToTop}
               className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-950 border border-brand-100 hover:bg-brand-50 transition-all shadow-lg"
             >

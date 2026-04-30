@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Outfit:wght@200;300;400;500;600&display=swap');
+
+:root {
+  --gold: #D4AF37;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --neon-blue: #00F3FF;
+  --black: #050505;
+  --white: #F8F8F8;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+  /* Prevent scrolling for cinematic experience */
+  width: 100vw;
+  height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Cinematic Container */
+.showcase-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background Layers */
+.scene {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 4rem;
+  /* Adjusted for better spacing from right */
+  /* Opacity and visibility handled by Framer Motion */
+}
+
+.scene.active {
+  pointer-events: all;
+}
+
+.scene-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6) contrast(1.1);
+  transform: scale(1.05);
+}
+
+/* Glassmorphism Content Overlay */
+.content-overlay {
+  position: relative;
+  z-index: 10;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  padding: 3rem 5rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  text-align: center;
+  max-width: 800px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.content-overlay h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  /* Solid white for absolute visibility */
+  filter: drop-shadow(0 0 10px var(--gold-glow));
+}
+
+.content-overlay h2 span {
+  display: inline-block;
+  color: var(--gold);
+}
+
+.content-overlay p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Glass Shine Effect */
+.content-overlay::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0) 60%,
+      transparent 100%);
+  transform: rotate(-45deg);
+  animation: shine 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(-45deg);
+  }
+
+  20%,
+  100% {
+    transform: translateX(100%) rotate(-45deg);
+  }
+}
+
+/* Glitch and Scanline Effects */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.05;
+  z-index: 99;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.glow-orb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Morph transitions simulated via JS / Framer Motion */
+.transition-blur {
+  filter: blur(20px);
+  opacity: 0;
+}
+
+/* Logo Animation Final Scene */
+.final-logo {
+  font-size: 5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 30px var(--gold);
+}
+
+.tagline {
+  font-size: 1.8rem;
+  letter-spacing: 5px;
+  margin-top: 2rem;
+  color: var(--gold);
+}
+
+.final-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 8rem;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  box-shadow: 0 0 15px var(--gold-glow);
+  transition: border-color 0.5s ease;
+}
+
+.custom-cursor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hide default cursor only if needed or when moving */
+body:hover {
+  cursor: none;
+}

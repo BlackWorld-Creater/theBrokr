@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowUpRight, CheckCircle2, TrendingUp, MapPin, X, Building, ShoppingCart, HeartPulse } from "lucide-react"
+import { ArrowUpRight, CheckCircle2, TrendingUp, MapPin, X, Building, ShoppingCart, Code2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -49,10 +49,10 @@ const Projects = () => {
       color: "bg-emerald-50 text-emerald-600 border-emerald-200"
     },
     {
-      title: "Healthcare Tech",
-      icon: HeartPulse,
-      desc: "Advanced medical facility clusters.",
-      color: "bg-rose-50 text-rose-600 border-rose-200"
+      title: "IT & Software",
+      icon: Code2,
+      desc: "Custom tech solutions & digital platforms.",
+      color: "bg-indigo-50 text-indigo-600 border-indigo-200"
     }
   ]
 

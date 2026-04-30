@@ -1,10 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 import { Phone, Mail, MapPin, Send, MessageSquare, Clock, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Toast } from "@/components/ui/toast"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -18,13 +20,45 @@ const contactSchema = z.object({
 })
 
 export default function ContactPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [resultMessage, setResultMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!resultMessage) return
+    const timer = window.setTimeout(() => setResultMessage(null), 5000)
+    return () => window.clearTimeout(timer)
+  }, [resultMessage])
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: zodResolver(contactSchema),
   })
 
-  const onSubmit = (data: any) => {
-    console.log(data)
-    alert("Thank you! Your message has been sent.")
+  const onSubmit = async (data: any) => {
+    setStatus("loading")
+    setResultMessage(null)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+      if (!response.ok) {
+        throw new Error(result?.error || "Unable to submit the form.")
+      }
+
+      reset()
+      setStatus("success")
+      setResultMessage("Thanks! Your request is received. We'll contact you shortly.")
+    } catch (error: any) {
+      console.error("Contact form submission error:", error)
+      setStatus("error")
+      setResultMessage(error?.message || "Something went wrong. Please try again.")
+    }
   }
 
   return (
@@ -91,26 +125,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Full Address */}
-              <div className="p-10 rounded-[40px] border border-brand-100 bg-white shadow-xl flex items-start space-x-6 group hover:border-indigo-200 transition-colors">
-                <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
-                   <MapPin className="w-6 h-6" />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-xl font-bold text-brand-950">TheBrokr HQ</h4>
-                  <p className="text-brand-600 text-sm leading-relaxed">
-                    Plot No. 70, 1st Floor, Udyog Vihar Phase - 6, <br />
-                    Sector - 37 Industrial Area, Near Hero Honda Chowk, <br />
-                    Gurugram, Haryana, India
-                  </p>
-                </div>
-              </div>
-
-              {/* Working Hours */}
-              <div className="flex items-center space-x-4 text-brand-500 text-sm">
-                <Clock className="w-5 h-5 text-indigo-400" />
-                <span>Mon - Sat: 10:00 AM - 07:00 PM (IST)</span>
-              </div>
             </motion.div>
 
             {/* Contact Form */}
@@ -126,9 +140,17 @@ export default function ContactPage() {
               
               <div className="space-y-10 relative z-10">
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-display font-bold text-brand-950">Send a Message</h3>
-                  <p className="text-brand-500 text-sm">Fill out the form below and an expert will get back to you shortly.</p>
+                  <h3 className="text-3xl font-display font-bold text-brand-950">Share Your Vision</h3>
+                  <p className="text-brand-500 text-sm">Tell us how you'd like to grow — we'll respond with tailored guidance.</p>
                 </div>
+
+                <Toast
+                  open={Boolean(resultMessage)}
+                  variant={status === "success" ? "success" : "error"}
+                  title={status === "success" ? "Message sent" : "Submission failed"}
+                  message={resultMessage ?? "Something went wrong. Please try again."}
+                  onClose={() => setResultMessage(null)}
+                />
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -187,9 +209,10 @@ export default function ContactPage() {
                   <Button 
                     type="submit" 
                     size="lg"
-                    className="w-full h-16 bg-brand-950 hover:bg-brand-800 text-white font-bold rounded-2xl shadow-xl transition-all duration-300 group"
+                    disabled={status === "loading"}
+                    className="w-full h-16 bg-brand-950 hover:bg-brand-800 text-white font-bold rounded-2xl shadow-xl transition-all duration-300 group disabled:opacity-70"
                   >
-                    Send Information
+                    {status === "loading" ? "Sending..." : "Send Request"}
                     <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </Button>
                 </form>
@@ -207,7 +230,7 @@ export default function ContactPage() {
                <div className="text-center space-y-4">
                  <Globe className="w-12 h-12 text-brand-400 mx-auto animate-spin-slow" />
                  <p className="text-brand-600 font-bold uppercase tracking-widest text-xs">Interactive Google Map Integration Placeholder</p>
-                 <p className="text-brand-400 text-[10px] max-w-xs mx-auto">TheBrokr HQ. Plot No. 70, Udyog Vihar Phase - 6, Gurugram</p>
+                 <p className="text-brand-400 text-[10px] max-w-xs mx-auto">Map preview is disabled in this version.</p>
                </div>
              </div>
              {/* Note: In a real environment, paste the iframe here */}

@@ -1,7 +1,8 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Send, MessageSquare, Clock } from "lucide-react"
+import { Phone, Send, MessageSquare, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,19 +13,37 @@ import * as z from "zod"
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Invalid phone number"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  phone: z.string().optional(),
+  subject: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters"),
 })
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(contactSchema),
   })
 
-  const onSubmit = (data: any) => {
-    console.log(data)
-    alert("Thank you! Your message has been sent.")
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setIsSubmitted(true)
+      reset()
+    } catch (error) {
+      console.error(error)
+      alert("Something went wrong. Please try again later.")
+    }
   }
 
   return (
@@ -64,7 +83,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-green-500 text-white flex items-center justify-center mb-6 shadow-xl shadow-green-500/20 group-hover:scale-110 transition-transform">
                   <MessageSquare className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-bold text-brand-950 group-hover:text-indigo-600 transition-colors">WhatsApp</h4>
@@ -75,7 +94,7 @@ const Contact = () => {
                 href="tel:+919999900943"
                 className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
               >
-                <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-xl shadow-indigo-600/20 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-green-500 text-white flex items-center justify-center mb-6 shadow-xl shadow-green-500/20 group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-bold text-brand-950 group-hover:text-indigo-600 transition-colors">Call Representative</h4>
@@ -84,32 +103,6 @@ const Contact = () => {
               </a>
             </div>
 
-            {/* Address */}
-            <div className="p-10 rounded-[40px] border border-brand-100 bg-white shadow-xl flex items-start space-x-6 group hover:border-indigo-200 transition-colors">
-              <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
-                 <MapPin className="w-6 h-6" />
-              </div>
-              <div className="space-y-2">
-                <h4 className="text-xl font-bold text-brand-950">Location</h4>
-                <p className="text-brand-600 text-sm leading-relaxed">
-                  Plot No. 70, 1st Floor, Udyog Vihar Phase - 6, <br />
-                  Sector - 37 Industrial Area, Near Hero Honda Chowk, <br />
-                  Gurugram, Haryana
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <a href="mailto:info@thebrokrs.co.in" className="flex items-center space-x-3 text-brand-600 hover:text-indigo-600 transition-colors">
-                <Mail className="w-5 h-5" />
-                <span className="font-bold">info@thebrokrs.co.in</span>
-              </a>
-              <div className="h-4 w-px bg-brand-200" />
-              <div className="flex items-center space-x-3 text-brand-400 text-xs font-bold uppercase tracking-widest">
-                <Clock className="w-5 h-5 text-indigo-400" />
-                <span>Mon - Sat: 10AM - 7PM</span>
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -126,45 +119,60 @@ const Contact = () => {
                 <p className="text-brand-500 text-sm">Fill out the form below and an expert will get back to you shortly.</p>
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Full Name</label>
-                    <Input 
-                      placeholder="John Doe" 
-                      {...register("name")}
-                      className={errors.name ? "border-red-500 h-14 rounded-xl" : "h-14 rounded-xl border-brand-100"} 
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Email Address</label>
-                    <Input 
-                      placeholder="john@example.com" 
-                      {...register("email")}
-                      className={errors.email ? "border-red-500 h-14 rounded-xl" : "h-14 rounded-xl border-brand-100"} 
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Message</label>
-                  <Textarea 
-                    placeholder="How can we help you?" 
-                    rows={6}
-                    {...register("message")}
-                    className={errors.message ? "border-red-500 rounded-2xl" : "rounded-2xl border-brand-100"} 
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  size="lg"
-                  className="w-full h-16 bg-white text-brand-950 border border-brand-100 hover:bg-brand-50 font-bold rounded-2xl shadow-xl transition-all duration-300 group"
+              {isSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-12 space-y-4 text-center"
                 >
-                  Send Information
-                  <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Button>
-              </form>
+                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
+                    <CheckCircle2 className="w-10 h-10 text-green-600" />
+                  </div>
+                  <h4 className="text-xl font-bold text-brand-950">Message Sent Successfully</h4>
+                  <p className="text-brand-600 text-sm">Thank you! Our expert team will get back to you shortly.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Full Name</label>
+                      <Input 
+                        placeholder="John Doe" 
+                        {...register("name")}
+                        className={errors.name ? "border-red-500 h-14 rounded-xl" : "h-14 rounded-xl border-brand-100"} 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Email Address</label>
+                      <Input 
+                        placeholder="john@example.com" 
+                        {...register("email")}
+                        className={errors.email ? "border-red-500 h-14 rounded-xl" : "h-14 rounded-xl border-brand-100"} 
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-brand-400 pl-1">Message</label>
+                    <Textarea 
+                      placeholder="How can we help you?" 
+                      rows={6}
+                      {...register("message")}
+                      className={errors.message ? "border-red-500 rounded-2xl" : "rounded-2xl border-brand-100"} 
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full h-16 bg-white text-brand-950 border border-brand-100 hover:bg-brand-50 font-bold rounded-2xl shadow-xl transition-all duration-300 group disabled:opacity-50"
+                  >
+                    {isSubmitting ? "Sending..." : "Send Information"}
+                    {!isSubmitting && <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
+                  </Button>
+                </form>
+              )}
             </div>
           </motion.div>
         </div>

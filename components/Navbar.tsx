@@ -24,7 +24,6 @@ const Navbar = () => {
     { name: "About Us", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
     { name: "Contact", href: "#contact" },
   ]
 
@@ -32,8 +31,8 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out",
-        isScrolled 
-          ? "py-3 bg-white/70 dark:bg-black/80 backdrop-blur-2xl border-b border-brand-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]" 
+        isScrolled
+          ? "py-3 bg-white/70 dark:bg-black/80 backdrop-blur-2xl border-b border-brand-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]"
           : "py-6 bg-transparent"
       )}
     >
@@ -69,8 +68,8 @@ const Navbar = () => {
                 variant="ghost"
                 className={cn(
                   "px-5 py-2 text-sm font-bold uppercase tracking-widest transition-all duration-300 hover:bg-transparent",
-                  isScrolled 
-                    ? "text-brand-950 hover:text-indigo-600" 
+                  isScrolled
+                    ? "text-brand-950 hover:text-indigo-600"
                     : "text-white hover:text-white/80"
                 )}
                 asChild
@@ -81,14 +80,14 @@ const Navbar = () => {
               </Button>
             </motion.div>
           ))}
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="ml-4"
           >
-            <Button 
+            <Button
               className={cn(
                 "rounded-full px-8 py-6 text-sm font-bold uppercase tracking-[0.1em] transition-all duration-500",
                 isScrolled
@@ -107,7 +106,10 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden relative z-50 p-2 text-slate-900 focus:outline-none"
+          className={cn(
+            "lg:hidden relative z-50 p-2 focus:outline-none transition-colors duration-300",
+            isScrolled || mobileMenuOpen ? "text-slate-900" : "text-white"
+          )}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -145,7 +147,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.1 }}
             >
-              <Button 
+              <Button
                 size="lg"
                 className="bg-white text-brand-950 border border-brand-100 rounded-full px-10 hover:bg-brand-50"
                 asChild
