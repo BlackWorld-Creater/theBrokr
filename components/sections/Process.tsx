@@ -8,171 +8,138 @@ const steps = [
     step: "01",
     icon: UserPlus,
     title: "Register",
-    subtitle: "Begin Your Journey",
-    description: "Sign up quickly to unlock access to strategic investment clusters and essential services designed for steady, long-term growth.",
-    highlight: "Fast onboarding · Secure verification",
+    description: "Begin your journey by signing up. Access strategic investment clusters and tailored business services.",
+    highlight: "Quick & Secure",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
-    accent: "from-indigo-500 to-violet-500",
-    accentLight: "bg-indigo-50",
-    accentText: "text-indigo-600",
-    accentBorder: "border-indigo-100",
+    accent: "bg-indigo-600"
   },
   {
     step: "02",
     icon: ShieldCheck,
     title: "Complete KYC",
-    subtitle: "Verify & Secure",
-    description: "Verify your identity with a smooth, transparent KYC process that protects your investment and gives you legal land ownership confidence.",
-    highlight: "Safe · Compliant · Documented",
+    description: "Verify your identity through our transparent process to ensure legal compliance and ownership confidence.",
+    highlight: "Safe & Documented",
     image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&q=80&w=800",
-    accent: "from-emerald-500 to-cyan-500",
-    accentLight: "bg-emerald-50",
-    accentText: "text-emerald-600",
-    accentBorder: "border-emerald-100",
+    accent: "bg-emerald-600"
   },
   {
     step: "03",
     icon: Gift,
     title: "Refer & Earn",
-    subtitle: "Grow Together",
-    description: "Share the opportunity with your network and earn referral rewards while helping others join a trusted business ecosystem.",
-    highlight: "Grow your circle · Increase returns",
+    description: "Share the vision with your network. Grow your community and earn rewards as you help others build their legacy.",
+    highlight: "Collective Growth",
     image: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?auto=format&fit=crop&q=80&w=800",
-    accent: "from-rose-500 to-orange-400",
-    accentLight: "bg-rose-50",
-    accentText: "text-rose-600",
-    accentBorder: "border-rose-100",
+    accent: "bg-rose-600"
   }
 ]
 
 const Process = () => {
   return (
-    <section
-      id="process"
-      className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50/20 mx-0 md:mx-6 rounded-[40px] shadow-2xl my-16 border border-brand-100/60"
-    >
-      {/* Background Glows */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 right-10 w-96 h-96 bg-indigo-400 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-10 w-96 h-96 bg-violet-400 rounded-full blur-[120px]" />
-      </div>
-
+    <section id="process" className="py-24 bg-white relative overflow-hidden">
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-            How It Works
-          </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-950 tracking-tight mb-4">
-            Our Process
-          </h2>
+        <div className="text-center mb-20 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest mb-4"
+          >
+            <span className="w-2 h-2 rounded-full bg-indigo-600" />
+            <span>The Journey</span>
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-950">How It Works</h2>
           <p className="text-brand-600 text-lg max-w-2xl mx-auto leading-relaxed">
-            A streamlined, transparent three-step journey designed to help you register, verify, and start building your legacy with ease.
+            A streamlined, three-step path designed to help you build, verify, and grow your wealth within our community.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 relative">
-          {/* Horizontal connector line (desktop) */}
-          <div className="hidden lg:block absolute top-[88px] left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-px bg-gradient-to-r from-indigo-200 via-violet-200 to-rose-200 z-0" />
+        <div className="relative">
+          {/* Main Path Line (Visible & Clean) */}
+          <div className="hidden lg:block absolute top-[180px] left-[15%] right-[15%] h-1 bg-slate-100 rounded-full z-0 overflow-hidden">
+             <motion.div 
+               initial={{ width: 0 }}
+               whileInView={{ width: '100%' }}
+               transition={{ duration: 1.5, ease: "easeInOut" }}
+               className="h-full bg-gradient-to-r from-indigo-500 via-emerald-500 to-rose-500" 
+             />
+          </div>
 
-          {steps.map((step, i) => {
-            const Icon = step.icon
-            return (
-              <div key={i} className="relative flex flex-col items-center px-4 lg:px-6">
-                {/* Step Number Badge + Icon */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  viewport={{ once: true }}
-                  className="relative z-10 mb-8 flex flex-col items-center"
-                >
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.accent} flex items-center justify-center shadow-xl shadow-indigo-500/20 mb-3 group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <span className="text-[11px] font-black uppercase tracking-[0.25em] text-brand-400">
-                    Step {step.step}
-                  </span>
-                </motion.div>
-
-                {/* Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.15 + 0.1 }}
-                  viewport={{ once: true }}
-                  className={`group w-full h-[380px] flex flex-col rounded-[32px] bg-white border-2 ${step.accentBorder} shadow-xl hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden relative`}
-                >
-                  {/* Top image strip */}
-                  <div className="relative h-[160px] overflow-hidden shrink-0">
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${step.accent} opacity-40`} />
-                    {/* Subtitle chip */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${step.accentLight} ${step.accentText} shadow-sm`}>
-                        <span className="w-1 h-1 rounded-full bg-current" />
-                        {step.subtitle}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 p-6 justify-between">
-                    <div>
-                      <h3 className={`text-xl font-display font-bold text-brand-950 mb-2 group-hover:${step.accentText} transition-colors`}>
-                        {step.title}
-                      </h3>
-                      <p className="text-brand-600 text-[13px] leading-relaxed line-clamp-3">
-                        {step.description}
-                      </p>
-                    </div>
-
-                    {/* Highlight pill */}
-                    <div className={`mt-4 flex items-center gap-2 text-[11px] font-bold ${step.accentText} ${step.accentLight} rounded-xl px-3 py-2`}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-current shrink-0" />
-                      {step.highlight}
-                    </div>
-                  </div>
-
-                  {/* Accent corner line */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${step.accent} opacity-60`} />
-                </motion.div>
-
-                {/* Arrow between cards (desktop) */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute top-[88px] -right-5 z-20 items-center justify-center w-10 h-10 rounded-full bg-white border border-brand-100 shadow-md">
-                    <ArrowRight className="w-4 h-4 text-indigo-400" />
-                  </div>
-                )}
-
-                {/* Arrow between cards (mobile) */}
-                {i < steps.length - 1 && (
-                  <div className="flex lg:hidden items-center justify-center my-4">
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="w-px h-6 bg-indigo-200" />
-                      <div className="w-6 h-6 rounded-full bg-white border border-brand-100 shadow flex items-center justify-center">
-                        <ArrowRight className="w-3 h-3 text-indigo-400 rotate-90" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+            {steps.map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div key={i} className="relative group">
+                  {/* Step Card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: i * 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col bg-white rounded-[40px] border border-brand-100 shadow-xl shadow-brand-500/5 h-full group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 relative"
+                  >
+                    {/* Image Area (Overflow hidden here) */}
+                    <div className="relative h-48 overflow-hidden rounded-t-[40px]">
+                      <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-brand-950/20 group-hover:bg-transparent transition-colors duration-500" />
+                      
+                      {/* Floating Step Badge */}
+                      <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-2xl text-brand-950 font-black text-sm shadow-xl">
+                        STEP {item.step}
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            )
-          })}
+
+                    {/* Icon Circle (Now outside/overlapping safely) */}
+                    <div className={`absolute top-[160px] right-8 w-16 h-16 rounded-2xl ${item.accent} text-white flex items-center justify-center shadow-2xl shadow-indigo-200 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 z-30`}>
+                      <Icon className="w-8 h-8" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-10 pt-12 space-y-6 flex-1 flex flex-col relative z-10">
+                      <div className="space-y-3">
+                        <h3 className="text-2xl font-bold text-brand-950 group-hover:text-indigo-600 transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-brand-600 leading-relaxed text-sm">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-auto pt-6">
+                        <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-xl bg-slate-50 border border-brand-100 text-brand-400 text-[10px] font-bold uppercase tracking-widest group-hover:bg-indigo-50 group-hover:text-indigo-600 group-hover:border-indigo-100 transition-all">
+                          <span>{item.highlight}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Enhanced Connecting Arrows (Visible & Clean) */}
+                  {i < steps.length - 1 && (
+                    <div className="hidden lg:flex absolute top-[180px] -right-10 w-16 h-16 items-center justify-center z-30">
+                      <div className="w-12 h-12 rounded-full bg-white border-4 border-slate-50 shadow-xl flex items-center justify-center animate-bounce-x">
+                        <ArrowRight className="w-6 h-6 text-indigo-600" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes bounce-x {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(5px); }
+        }
+        .animate-bounce-x {
+          animation: bounce-x 2s infinite ease-in-out;
+        }
+      `}</style>
     </section>
   )
 }

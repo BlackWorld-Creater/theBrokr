@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Building2, Code2, Landmark, ShieldCheck, PieChart, Plane, ShoppingBag, Stethoscope, Rocket } from "lucide-react"
+import { Building2, Code2, Landmark, ShieldCheck, PieChart, Plane, ShoppingBag, Stethoscope, Rocket, Users } from "lucide-react"
 
 const categories = [
   {
@@ -59,6 +59,13 @@ const categories = [
     icon: Stethoscope,
     color: "text-teal-600",
     bg: "bg-teal-50"
+  },
+  {
+    title: "Man Power",
+    description: "Empowering your business with the right talent — our upcoming manpower solutions connect skilled professionals with top-tier opportunities.",
+    icon: Users,
+    color: "text-blue-600",
+    bg: "bg-blue-50"
   }
 ]
 
@@ -85,7 +92,7 @@ const LaunchingSoon = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((item, i) => (
             <motion.div
               key={i}
