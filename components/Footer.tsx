@@ -26,9 +26,9 @@ const Footer = () => {
           <div className="space-y-8">
             <Link href="/" className="inline-block transform transition-transform hover:scale-105">
               <img
-                src="https://thebrokrs.co.in/wp-content/uploads/2024/08/Final-brokrs-grand-sapphire-2-1024x422.png"
+                src="./assets/logo blue.png"
                 alt="TheBrokr Logo"
-                className="h-14 w-auto"
+                className="h-10 w-auto"
               />
             </Link>
             <p className="text-brand-600 text-sm leading-relaxed max-w-xs">

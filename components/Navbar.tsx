@@ -45,9 +45,9 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
           <img
-            src="./assets/logo2.png"
+            src="./assets/logo2-clear.png"
             alt="The Brokrs"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-20 md:h-20 w-auto object-contain"
          />
           </motion.div>
         </Link>
