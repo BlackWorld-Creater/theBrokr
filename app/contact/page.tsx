@@ -113,7 +113,7 @@ export default function ContactPage() {
                   </div>
                   <h4 className="text-xl font-bold text-brand-950 group-hover:text-white transition-colors">Call/WhatsApp</h4>
                   <p className="text-brand-500 text-sm mt-2 group-hover:text-brand-300 transition-colors">Direct line for support</p>
-                  <p className="text-brand-900 font-bold mt-4 group-hover:text-gold-400 transition-colors">+91 99999 00943</p>
+                  <p className="text-brand-900 font-bold mt-4 group-hover:text-gold-400 transition-colors">+91 78001 78002</p>
                 </div>
                 <div className="p-8 rounded-[40px] bg-brand-50 border border-brand-100 group hover:bg-brand-900 transition-all duration-500">
                   <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mb-6 shadow-xl shadow-indigo-600/20">
@@ -223,20 +223,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section Placeholder */}
-      <section className="bg-brand-50 py-12 px-6">
-        <div className="container max-w-7xl mx-auto">
-          <div className="aspect-video w-full rounded-[60px] bg-brand-200 overflow-hidden relative shadow-2xl">
-             <div className="absolute inset-0 flex items-center justify-center">
-               <div className="text-center space-y-4">
-                 <Globe className="w-12 h-12 text-brand-400 mx-auto animate-spin-slow" />
-                 <p className="text-brand-600 font-bold uppercase tracking-widest text-xs">Interactive Google Map Integration Placeholder</p>
-                 <p className="text-brand-400 text-[10px] max-w-xs mx-auto">Map preview is disabled in this version.</p>
-               </div>
-             </div>
-             {/* Note: In a real environment, paste the iframe here */}
-          </div>
-        </div>
-      </section>
+     
     </main>
   )
 }
