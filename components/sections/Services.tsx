@@ -97,7 +97,7 @@ const Services = () => {
                   </p>
                   
                   <div className="pt-2 flex items-center text-white/50 text-xs font-bold uppercase tracking-widest group-hover:text-white transition-all">
-                    <span>Explore Scope</span>
+                    <span></span>
                     <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </div>
