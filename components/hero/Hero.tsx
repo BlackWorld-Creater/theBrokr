@@ -54,14 +54,36 @@ const Hero = () => {
       stats: "Zero Entry Cost"
     }
   ]
-  const rotatingWords = ["Success", "Victory", "Triumph", "Fortune", "Winning"]
-  const rotatingSynonyms = ["Unite.", "Converge.", "Connect.", "Align.", "Merge."]
+  const rotatingWords = [
+    "Real Estate",
+    "Software",
+    "Loan",
+    "Insurance",
+    "Investment",
+    "Travel",
+    "Grocery",
+    "Medicine",
+    "Manpower",
+    "E-Commerce"
+  ]
+  const rotatingSynonyms = [
+    "Unite.",
+    "Innovate.",
+    "Empower.",
+    "Secure.",
+    "Multiply.",
+    "Inspire.",
+    "Deliver.",
+    "Heal.",
+    "Build.",
+    "Scale."
+  ]
   const [wordIndex, setWordIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % rotatingWords.length)
-    }, 3000)
+    }, 6000)
     return () => clearInterval(interval)
   }, [])
 

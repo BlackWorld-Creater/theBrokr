@@ -20,7 +20,7 @@ import { StaticImageData } from 'next/image';
 // Assets (Local imports for first 6, Unsplash for last 4)
 import realEstateImg from './assets/real_estate.png';
 import itSoftwareImg from './assets/it_software.png';
-import financeImg from './assets/finance.png';
+import LoanImg from './assets/Loan.png';
 import insuranceImg from './assets/insurance.png';
 import investmentImg from './assets/investment.png';
 import travelImg from './assets/travel.png';
@@ -53,9 +53,9 @@ const industries: Industry[] = [
   },
   {
     id: 3,
-    title: 'Finance',
+    title: 'Loan',
     desc: 'Wealth Growth. Corporate Excellence.',
-    image: financeImg,
+    image: LoanImg,
     icon: <PieChart className="w-12 h-12" />,
     color: '#D4AF37'
   },

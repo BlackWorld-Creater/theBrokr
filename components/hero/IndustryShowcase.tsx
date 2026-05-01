@@ -39,7 +39,7 @@ const industries = [
     id: 3,
     title: 'Loan',
     desc: 'Wealth Growth. Corporate Excellence.',
-    image: '/assets/industry/finance.png',
+    image: '/assets/industry/Loan.png',
     icon: <PieChart className="w-12 h-12" />,
     color: '#D4AF37'
   },
@@ -47,7 +47,7 @@ const industries = [
     id: 4,
     title: 'Insurance',
     desc: 'Unwavering Protection. Total Security.',
-    image: '/assets/industry/insurance.png',
+    image: '/assets/industry/insurence.png',
     icon: <ShieldCheck className="w-12 h-12" />,
     color: '#FFA500'
   },
@@ -71,7 +71,7 @@ const industries = [
     id: 7,
     title: 'Grocery',
     desc: 'Unparalleled Freshness. Premium Quality.',
-    image: '/assets/industry/grocery.avif',
+    image: '/assets/industry/grocery.png',
     icon: <Apple className="w-12 h-12" />,
     color: '#32CD32'
   },
@@ -79,7 +79,7 @@ const industries = [
     id: 8,
     title: 'Medicine',
     desc: 'Sentient Wellness. Precise Care.',
-    image: '/assets/industry/healt_care.avif',
+    image: '/assets/industry/medicine.png',
     icon: <HeartPulse className="w-12 h-12" />,
     color: '#FF1493'
   },
@@ -87,7 +87,7 @@ const industries = [
     id: 9,
     title: 'Manpower',
     desc: 'Global Teams. Elite Talent.',
-    image: '/assets/industry/man_power.avif',
+    image: '/assets/industry/man_power.png',
     icon: <Users className="w-12 h-12" />,
     color: '#4169E1'
   },
@@ -95,7 +95,7 @@ const industries = [
     id: 10,
     title: 'E-Commerce',
     desc: 'Direct Delivery. Luxury Logistics.',
-    image: 'https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?auto=format&fit=crop&q=80&w=1920',
+    image: '/assets/industry/e-commerce.png',
     icon: <ShoppingBag className="w-12 h-12" />,
     color: '#D4AF37'
   }
