@@ -15,6 +15,7 @@ import {
   Layers
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { StaticImageData } from 'next/image';
 
 // Assets (Local imports for first 6, Unsplash for last 4)
 import realEstateImg from './assets/real_estate.png';
@@ -24,7 +25,16 @@ import insuranceImg from './assets/insurance.png';
 import investmentImg from './assets/investment.png';
 import travelImg from './assets/travel.png';
 
-const industries = [
+interface Industry {
+  id: number;
+  title: string;
+  desc: string;
+  image: string | StaticImageData;
+  icon: React.ReactNode;
+  color: string;
+}
+
+const industries: Industry[] = [
   {
     id: 1,
     title: 'Real Estate',
@@ -182,7 +192,7 @@ const App: React.FC = () => {
             className="scene active"
           >
             <motion.img
-              src={industries[currentScene].image}
+              src={typeof industries[currentScene].image === 'string' ? industries[currentScene].image : industries[currentScene].image.src}
               alt={industries[currentScene].title}
               className="scene-image"
               initial={{ scale: 1.1, opacity: 0 }}
