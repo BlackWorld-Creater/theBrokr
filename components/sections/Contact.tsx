@@ -68,7 +68,7 @@ const Contact = () => {
                 Connect With Us
               </h3>
               <h2 className="text-4xl md:text-6xl font-display font-bold text-brand-950 leading-tight">
-                Contact Headquarter<br /><span className="text-indigo-600 font-light italic"></span>
+                Contact Headquarter<br />
               </h2>
               <p className="text-brand-600 text-lg leading-relaxed max-w-md">
                 Ready to explore strategic land clusters or join our community? Our team is available to assist you via WhatsApp, Phone, or Email.
