@@ -32,7 +32,7 @@ const Footer = () => {
               />
             </Link>
             <p className="text-brand-600 text-sm leading-relaxed max-w-xs">
-              TheBrokr — A Platform Where Skills, Business & Opportunity Meet. Empowerment through community and strategic investments.
+              TheBrokrs — A Platform Where Skills, Business & Opportunity Meet. Empowerment through community and strategic investments.
             </p>
             <div className="flex items-center space-x-4">
               {[

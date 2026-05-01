@@ -241,7 +241,7 @@
 /* ── Service Tag Strip ── */
 .service-tags-strip {
   display: flex;
-  animation: slide-tags 30s linear infinite;
+  animation: slide-tags 60s linear infinite;
   width: max-content;
 }
 

@@ -174,7 +174,7 @@ const Hero = () => {
         >
           <div className="overflow-hidden py-3">
             <div className="service-tags-strip">
-              {[...serviceTags, ...serviceTags].map((tag, i) => (
+              {[...serviceTags, ...serviceTags, ...serviceTags, ...serviceTags].map((tag, i) => (
                 <div
                   key={i}
                   className="flex items-center gap-2.5 px-5 py-2.5 mx-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/90 shrink-0 hover:bg-white/20 hover:border-white/30 transition-all duration-300 cursor-default group"

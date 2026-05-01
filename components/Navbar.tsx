@@ -7,48 +7,74 @@ import { Menu, X, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
+const navLinks = [
+  { name: "Home", href: "#home" },
+  { name: "About Us", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Services", href: "#services" },
+  { name: "Contact", href: "#contact" },
+]
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
-  const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
-  ]
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean)
+      let current = ""
+      for (const section of sections) {
+        if (section) {
+          const rect = section.getBoundingClientRect()
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            current = section.id
+          }
+        }
+      }
+      if (current) {
+        setActiveSection(current)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    
+    // Trigger once after mounting to set initial state
+    const timeoutId = setTimeout(handleScroll, 500)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearTimeout(timeoutId)
+    }
+  }, [])
 
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out",
         isScrolled
-          ? "py-3 bg-white/70 dark:bg-black/80 backdrop-blur-2xl border-b border-brand-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]"
-          : "py-6 bg-transparent"
+          ? "py-2 md:py-3 bg-white/95 dark:bg-black/90 backdrop-blur-2xl border-b border-brand-100/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]"
+          : "py-4 md:py-6 bg-transparent"
       )}
     >
       <div className="container max-w-7xl mx-auto flex items-center justify-between px-6">
         {/* Logo */}
-        <Link href="/" className="relative z-50 group">
+        <Link href="/" className="relative z-50 group flex items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-          <img
-            src="./assets/logo2-clear.png"
-            alt="The Brokrs"
-            className="h-20 md:h-20 w-auto object-contain"
-         />
+            <img
+              src={(isScrolled || mobileMenuOpen) ? "./assets/logo blue.png" : "./assets/logo2-clear.png"}
+              alt="The Brokrs"
+              className={cn(
+                "w-auto object-contain transition-all duration-300",
+                (isScrolled || mobileMenuOpen) ? "h-9 md:h-9" : "h-16 md:h-20"
+              )}
+            />
           </motion.div>
         </Link>
 
@@ -66,8 +92,12 @@ const Navbar = () => {
                 className={cn(
                   "px-5 py-2 text-sm font-bold uppercase tracking-widest transition-all duration-300 hover:bg-transparent",
                   isScrolled
-                    ? "text-brand-950 hover:text-indigo-600"
-                    : "text-white hover:text-white/80"
+                    ? activeSection === link.href.substring(1) 
+                      ? "text-indigo-600" 
+                      : "text-brand-950 hover:text-indigo-600"
+                    : activeSection === link.href.substring(1)
+                      ? "text-indigo-400"
+                      : "text-white hover:text-white/80"
                 )}
                 asChild
               >
@@ -132,7 +162,12 @@ const Navbar = () => {
               >
                 <Link
                   href={link.href}
-                  className="text-2xl font-display font-semibold text-slate-900 hover:text-indigo-600 transition-colors"
+                  className={cn(
+                    "text-2xl font-display font-semibold transition-colors",
+                    activeSection === link.href.substring(1)
+                      ? "text-indigo-600"
+                      : "text-slate-900 hover:text-indigo-600"
+                  )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
