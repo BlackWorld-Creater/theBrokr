@@ -7,8 +7,8 @@ import { MessageSquare, Phone, X, MessageCircle } from "lucide-react"
 const SupportPopup = () => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const phoneNumber = "+919999900943"
-  const whatsappUrl = `https://wa.me/919999900943`
+  const phoneNumber = "+917800178002"
+  const whatsappUrl = `https://wa.me/917800178002`
 
   return (
     <motion.div 

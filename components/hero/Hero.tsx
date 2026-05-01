@@ -11,12 +11,12 @@ import IndustryShowcase from "./IndustryShowcase"
 const serviceTags = [
   { name: "Real Estate", icon: Building2, color: "from-blue-500 to-blue-600" },
   { name: "IT & Software", icon: Code2, color: "from-indigo-500 to-indigo-600" },
-  { name: "Finance", icon: Landmark, color: "from-emerald-500 to-emerald-600" },
+  { name: "Loan", icon: Landmark, color: "from-emerald-500 to-emerald-600" },
   { name: "Insurance", icon: ShieldCheck, color: "from-rose-500 to-rose-600" },
   { name: "Investment", icon: PieChart, color: "from-amber-500 to-amber-600" },
   { name: "Travel", icon: Plane, color: "from-sky-500 to-sky-600" },
   { name: "Grocery", icon: ShoppingBag, color: "from-green-500 to-green-600" },
-  { name: "Healthcare", icon: Stethoscope, color: "from-teal-500 to-teal-600" },
+  { name: "Medicine", icon: Stethoscope, color: "from-teal-500 to-teal-600" },
   { name: "Manpower", icon: Users, color: "from-purple-500 to-purple-600" },
   { name: "E-Commerce", icon: Store, color: "from-pink-500 to-pink-600" },
 ]

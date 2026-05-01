@@ -37,7 +37,7 @@ const industries = [
   },
   {
     id: 3,
-    title: 'Finance',
+    title: 'Loan',
     desc: 'Wealth Growth. Corporate Excellence.',
     image: '/assets/industry/finance.png',
     icon: <PieChart className="w-12 h-12" />,
@@ -77,7 +77,7 @@ const industries = [
   },
   {
     id: 8,
-    title: 'Healthcare',
+    title: 'Medicine',
     desc: 'Sentient Wellness. Precise Care.',
     image: '/assets/industry/healt_care.avif',
     icon: <HeartPulse className="w-12 h-12" />,

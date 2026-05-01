@@ -44,14 +44,11 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src="https://thebrokrs.co.in/wp-content/uploads/2024/08/Final-brokrs-grand-sapphire-2-1024x422.png"
-              alt="TheBrokr Logo"
-              className={cn(
-                "transition-all duration-500",
-                isScrolled ? "h-10" : "h-12"
-              )}
-            />
+          <img
+            src="./assets/logo2.png"
+            alt="The Brokrs"
+            className="h-10 md:h-12 w-auto object-contain"
+         />
           </motion.div>
         </Link>
 

@@ -78,7 +78,7 @@ const Contact = () => {
             {/* Info Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <a 
-                href="https://wa.me/919999900943" 
+                href="https://wa.me/917800178002" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
@@ -88,10 +88,10 @@ const Contact = () => {
                 </div>
                 <h4 className="text-xl font-bold text-brand-950 group-hover:text-indigo-600 transition-colors">WhatsApp</h4>
                 <p className="text-brand-500 text-sm mt-2 transition-colors">Chat with us instantly</p>
-                <p className="text-brand-900 font-bold mt-4 transition-colors">+91 99999 00943</p>
+                <p className="text-brand-900 font-bold mt-4 transition-colors">+91 78001 78002</p>
               </a>
               <a 
-                href="tel:+919999900943"
+                href="tel:+917800178002"
                 className="p-8 rounded-[40px] bg-white/80 backdrop-blur-sm border border-brand-100/60 group hover:bg-white hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-500"
               >
                 <div className="w-14 h-14 rounded-2xl bg-green-500 text-white flex items-center justify-center mb-6 shadow-xl shadow-green-500/20 group-hover:scale-110 transition-transform">
@@ -99,7 +99,7 @@ const Contact = () => {
                 </div>
                 <h4 className="text-xl font-bold text-brand-950 group-hover:text-indigo-600 transition-colors">Call Representative</h4>
                 <p className="text-brand-500 text-sm mt-2 transition-colors">Speak with our experts</p>
-                <p className="text-brand-900 font-bold mt-4 transition-colors">+91 99999 00943</p>
+                <p className="text-brand-900 font-bold mt-4 transition-colors">+91 78001 78002</p>
               </a>
             </div>
 
