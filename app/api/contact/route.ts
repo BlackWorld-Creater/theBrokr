@@ -2,25 +2,27 @@ import { NextRequest, NextResponse } from "next/server"
 import { Pool } from "pg"
 
 const connectionString = process.env.DATABASE_URL
-if (!connectionString) {
-  throw new Error("DATABASE_URL is not configured. Please set it in your environment.")
-}
 
 declare global {
   // eslint-disable-next-line no-var
   var pgPool: Pool | undefined
 }
 
-const pool = global.pgPool ?? new Pool({
+const pool = global.pgPool ?? (connectionString ? new Pool({
   connectionString,
   ssl: { rejectUnauthorized: false },
-})
+}) : undefined)
 
-global.pgPool = pool
+if (pool) {
+  global.pgPool = pool
+}
 
 const tableName = "contact_messages"
 
 async function ensureTable() {
+  if (!pool) {
+    throw new Error("DATABASE_URL is not configured")
+  }
   await pool.query(`
     CREATE TABLE IF NOT EXISTS ${tableName} (
       id SERIAL PRIMARY KEY,
@@ -44,6 +46,10 @@ export async function POST(req: NextRequest) {
     }
 
     await ensureTable()
+
+    if (!pool) {
+      return NextResponse.json({ error: "Database not configured. Please set DATABASE_URL." }, { status: 500 })
+    }
 
     const result = await pool.query(
       `INSERT INTO ${tableName} (name, email, phone, subject, message) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
