@@ -44,7 +44,7 @@ const Services = () => {
   ]
 
   return (
-    <section id="services" className="section-padding bg-section-alt relative">
+    <section id="services" className="pt-12 pb-16 bg-section-alt relative">
       <div className="container max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
           <div className="space-y-4">

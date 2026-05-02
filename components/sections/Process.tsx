@@ -35,7 +35,7 @@ const steps = [
 
 const Process = () => {
   return (
-    <section id="process" className="py-24 bg-white relative overflow-hidden">
+    <section id="process" className="pt-10 pb-16 bg-white relative overflow-hidden">
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20 space-y-4">
           <motion.div

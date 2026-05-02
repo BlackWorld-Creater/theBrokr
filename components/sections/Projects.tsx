@@ -57,10 +57,10 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="section-padding bg-brand-50/30">
+    <section id="projects" className="pt-8 pb-16 bg-brand-50/30">
       <div className="container max-w-7xl mx-auto px-6">
         {/* Centered Layout Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 space-y-6">
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-10 space-y-6">
           <h3 className="text-indigo-600 font-bold uppercase tracking-widest text-sm flex items-center justify-center">
             <span className="w-8 h-px bg-indigo-600 mr-4" />
             Strategic Portfolios
@@ -171,7 +171,7 @@ const Projects = () => {
         </div>
         
         {/* Other Sectors Cards */}
-        <div className="mt-24 pt-16 border-t border-brand-100 pb-10">
+        <div className="mt-12 pt-20 border-t border-brand-100 pb-10">
           <div className="text-center mb-10 space-y-3">
             <h3 className="text-3xl font-display font-bold text-brand-950">Interested in other sectors?</h3>
             <p className="text-brand-600 max-w-lg mx-auto italic">We have more clusters launching soon. Select a sector below to submit an early query.</p>

@@ -36,7 +36,7 @@ export default function Home() {
       <LaunchingSoon />
       <Process />
       <Services />
-      <Team />
+      {/* <Team /> */}
       <Contact />
     </main>
   )

@@ -124,7 +124,7 @@ const About = () => {
         </motion.div>
 
         {/* Optional Bullet Points (Simplified & Centered) */}
-        <div className="flex flex-wrap justify-center gap-4 mt-12">
+        <div className="flex flex-wrap justify-center gap-4 mt-4">
           {[
             "Skill-based Entry",
             "Lifetime Returns",

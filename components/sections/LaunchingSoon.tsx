@@ -71,7 +71,7 @@ const categories = [
 
 const LaunchingSoon = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="pt-12 pb-16 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50/30 rounded-full blur-[100px] -mr-64 -mt-64" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-50/30 rounded-full blur-[100px] -ml-64 -mb-64" />
@@ -84,7 +84,7 @@ const LaunchingSoon = () => {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-sm font-bold uppercase tracking-widest mb-4"
           >
             <Rocket className="w-4 h-4" />
-            <span>Horizon 2025</span>
+            <span>Horizon 2026</span>
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-brand-950">Launching Soon.</h2>
           <p className="text-brand-600 text-lg max-w-2xl mx-auto leading-relaxed">
