@@ -99,7 +99,7 @@ const About = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[80px] -mr-32 -mt-32 transition-all duration-700 group-hover:scale-150" />
             
             <div className="relative z-10 flex flex-col items-center text-center space-y-10">
-              <p className="text-brand-950 font-display font-medium italic text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+              <p className="text-brand-950 font-display font-medium italic text-xl md:text-1xl leading-relaxed max-w-2xl mx-auto">
                 "Our goal is to build a community where every individual has the opportunity to thrive through collective investment and strategic synergy."
               </p>
               
