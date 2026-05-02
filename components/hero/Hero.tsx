@@ -151,7 +151,7 @@ const Hero = () => {
               </span>
             </h1>
 
-            <p className="text-xl md:text-3xl text-white/80 font-light leading-relaxed max-w-3xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.5)' }}>
+            <p className="text-xl md:text-1xl text-white/80 font-light leading-relaxed max-w-3xl" style={{ textShadow: '0 2px 15px rgba(0,0,0,0.5)' }}>
               Join the future of collaborative wealth. <br className="hidden md:block" />
               We bridge the gap between human potential and high-growth investment clusters.
             </p>
